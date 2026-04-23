@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "About Ever Vino"
+
+const identity = {
+    firstName: "Ever",
+    country: "Bolivia",
+    occupation: "Environmental Engineer",
+    hobbies: ["studying", "reading", "jogging"],
+    };
+const skills = ["Python", "HTML", "JavaScript", "Astro"]
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "crimson";
+const textCase = "uppercase";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{pageTitle}</title>
+<style define:vars={{skillColor, textCase}}>
+        h1 {
+            color: purple;
+            font-size: 4rem;
+        }
+        .skill {
+            color: var(--skillColor);
+            font-weighth: "bold";
+            text-transform: var(--textCase);
+        }
+    </style>
+</head>
+<body>
+    <Navigation />
+    <h1>{pageTitle}</h1>
+    <h2>... and my astro site</h2>
+    <p>Ia am working through Astro's introductory tutorial.</p>
+    <p>This site will uypdate as I complete more of the tutorial</p>
+    <p>Here are a few facts about me:</p>
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial</p>}
+    {goal == 3 ? <p>My goal is to finish in 3 days</p> : <p>My goals is not 3 days</p> }
+    <ul>
+        <li> My name is {identity.firstName}.</li>
+        <li> I live in {identity.country}.</li>
+        <li> Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    <p>{skills}</p>
+    <Footer />
+</body>
+</html>
